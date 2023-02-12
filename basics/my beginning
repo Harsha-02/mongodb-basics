@@ -1,0 +1,23 @@
+use jyothi
+db
+db.createCollection('student')
+show collections;
+db.student.insert({rollno: 1, name: "Amal", branch: "cse", cgpa: 7.0, place: "kochi"})
+db.student.insertMany([{rollno: 2, name: "Dia", branch: "cse", cgpa: 9.0},{rollno: 3, name: "joel", branch: "cse", cgpa: 8.5}])
+db.student.find()
+db.student.find().pretty()
+db.student.find({"rollno":1}).pretty()
+db.student.find({"cgpa":7})
+db.student.find({"cgpa":{$gt:8}}).pretty()
+db.student.find({"name":"joel"}).pretty()
+db.student.find({"cgpa":{$lt:9}},{name:1,_id:0,place:1}).pretty()
+db.student.update({"rollno":1},{$set:{"name":"Rahul","branch":"MR"}})
+db.student.find({"rollno":1}).pretty()
+db.student.remove({"rollno":2})
+db.student.find()
+db.student.remove({})
+db.student.find()
+db.student.drop()
+show collections;
+db.dropDatabase()
+show dbs;
